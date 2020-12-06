@@ -30,6 +30,9 @@
 .row
   - @photos.each  do |photo|
     .well.col-sm-4
+      - if current_user.id == photo.user_id
+        = link_to 'Delete', photo_path(photo.id), :method => :delete, class: ['btn', 'btn-danger', 'follow_btn']
+      %br/
       =photo.user.email
       %br/
       = image_tag photo.title
