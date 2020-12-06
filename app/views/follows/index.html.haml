@@ -1,0 +1,13 @@
+%h1 Follow
+
+%table#users
+  %thead
+    %tr
+      %th User 
+  %tbody
+    - @users.each do |user|
+      %tr
+      - if current_user.id != user.id
+        %td= user.email
+        %td= link_to 'Follow user', user_follows_path(user.id), method: "Post", class: ['btn', 'btn-primary', 'follow_btn']
+= link_to 'Back', user_path(current_user.id), class: ["btn", "btn-dark", 'btn-lg']
